@@ -12,30 +12,31 @@ function transformPoint(event) {
 
 // Step 2: drawSquare and drawCircle functions
 function drawSquare(xpos, ypos, size, color) {
-  var newsquare = document.createElementNS(namespace,"square")
-  newsquare.setAttribute("fill", color)
-  newsquare.setAttribute("width", size)
-  newsquare.setAttribute("height", size)
-  newsquare.setAttribute("x", xpos)
-  newsquare.setAttribute("y", ypos)
-  canvas.appendChild(newsquare)
+  var newSquare = document.createElementNS(namespace,"rect")
+  newSquare.setAttribute("fill", color)
+  newSquare.setAttribute("width", size)
+  newSquare.setAttribute("height", size)
+  newSquare.setAttribute("x", xpos)
+  newSquare.setAttribute("y", ypos)
+  screen.appendChild(newSquare)
 
   // square drawing code here
 }
 
 function drawCircle(xpos, ypos, size, color) {
-  var newcircle = document.createElementNS(namespace,"circle")
-  newcircle.setAttribute("fill", color)
-  newcircle.setAttribute("r", size)
-  newcircle.setAttribute("cx", xpos)
-  newcircle.setAttribute("cy", ypos)
-  canvas.appendChild(newcircle)
-
+  var newCircle = document.createElementNS(namespace,"circle")
+  newCircle.setAttribute("fill", color)
+  newCircle.setAttribute("r", size)
+  newCircle.setAttribute("cx", xpos)
+  newCircle.setAttribute("cy", ypos)
+  screen.appendChild(newCircle)
   // circle drawing code here
 }
 
 // Step 3: Event listeners
 document.addEventListener("mousedown", function(e) {
+  var pt = transformPoint(e)
+
   // what do you want to do when the user presses down
   // on the mouse button?
 })
@@ -43,9 +44,28 @@ document.addEventListener("mousedown", function(e) {
 document.addEventListener("mousemove", function(e) {
   // what do you want to do when the user move
   // on the mouse button?
+//1
+  var pt = transformPoint(e)
+  var xpos= pt.x
+  var ypos= pt.y
+//2
+var shapeSelect = document.getElementById("shapeSelect").value
+var colorSelect = document.getElementById("colorSelect").value
+var sizeSelect = document.getElementById("sizeSelect").value
+//3
+  if(shapeSelect == "square"){
+    drawSquare(pt.x, pt.y, sizeSelect, colorSelect)
+
+  }
+    else if (shapeSelect = "circle"){
+      drawCircle(pt.x, pt.y, sizeSelect, colorSelect)
+
+  }
 })
 
 document.addEventListener("mouseup", function(e) {
+  var pt = transformPoint(e)
+
   // what do you want to do when the user presses up
   // on the mouse button?
 })
