@@ -1,7 +1,6 @@
 var screen = document.getElementById("screen")
 var namespace = "http://www.w3.org/2000/svg"
-
-var drawing = false
+var drawing = false;
 
 // utility function
 function transformPoint(event) {
@@ -38,12 +37,12 @@ function drawCircle(xpos, ypos, size, color) {
 // Step 3: Event listeners
 document.addEventListener("mousedown", function(e) {
   var pt = transformPoint(e)
-  drawing = true
+  drawing = true;
 })
 
 document.addEventListener("mouseup", function(e) {
   var pt = transformPoint(e)
-  drawing = false
+  drawing = false;
 })
 
 document.addEventListener("mousemove", function(e) {
@@ -68,3 +67,11 @@ var sizeSelect = document.getElementById("sizeSelect").value
   }
 }
 })
+
+
+var rainbowArray = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+var rainbowIndex = 0;
+if(colorSelect == "rainbow"){
+  colorSelect = rainbow[rainbowIndex]
+  rainbowIndex = rainbowIndex + 1;
+  }
